@@ -14,11 +14,6 @@ import javax.sql.DataSource;
 @EnableConfigurationProperties
 public class Config {
 
-    /**
-     * The data source for storing all objects.
-     *
-     * @return data source
-     */
     @Bean
     @Profile("development")
     @ConfigurationProperties(prefix = "application.datasource")

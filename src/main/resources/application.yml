@@ -2,6 +2,12 @@ logging:
   level:
     root: info
 
+# include messages to the current configuration
+spring:
+  profiles:
+    # active profile
+    active: development
+
 ---
 # this is a development profile
 # use it for local development and testing
@@ -15,11 +21,10 @@ spring:
     show-sql: false
   jackson.serialization.FAIL_ON_EMPTY_BEANS: false
 
-
 application:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.99.100:5433/clients-db
+    url: jdbc:postgresql://192.168.99.100:5432/postgres
     username: postgres
     password: postgres
 
