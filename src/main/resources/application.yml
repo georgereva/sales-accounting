@@ -16,7 +16,7 @@ spring:
   datasource:
     sql-script-encoding: UTF-8
   jpa:
-    hibernate.ddl-auto: none
+    hibernate.ddl-auto: create
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     show-sql: false
   jackson.serialization.FAIL_ON_EMPTY_BEANS: false
@@ -24,7 +24,7 @@ spring:
 application:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.99.100:5432/postgres
+    url: jdbc:postgresql://192.168.99.100:5433/sa-db
     username: postgres
     password: postgres
 
