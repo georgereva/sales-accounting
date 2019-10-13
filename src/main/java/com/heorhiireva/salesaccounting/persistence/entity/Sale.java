@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -18,33 +20,49 @@ public class Sale {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(
-            name = "order_id",
+            name = "sale_id",
             updatable = false,
             nullable = false
     )
-    private UUID orderId;
+    private UUID saleId;
 
     private String name;
     private LocalDateTime dateTime;
     private Integer qty;
     private Double sum;
 
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}
+    )
+    @JoinTable(
+            name = "sale_product",
+            joinColumns = {@JoinColumn(
+                    name = "sale_id"
+            )},
+            inverseJoinColumns = {@JoinColumn(
+                    name = "product_id"
+            )}
+    )
+    private Set<Product> products = new HashSet();
+
     public Sale() {
     }
 
-    public Sale(String name, LocalDateTime dateTime, Integer qty, Double sum) {
+    public Sale(String name, LocalDateTime dateTime, Integer qty, Double sum, Set<Product> products) {
         this.name = name;
         this.dateTime = dateTime;
         this.qty = qty;
         this.sum = sum;
+        this.products = products;
     }
 
-    public UUID getOrderId() {
-        return orderId;
+    public UUID getSaleId() {
+        return saleId;
     }
 
-    public void setOrderId(UUID orderId) {
-        this.orderId = orderId;
+    public void setSaleId(UUID saleId) {
+        this.saleId = saleId;
     }
 
     public String getName() {
@@ -77,5 +95,13 @@ public class Sale {
 
     public void setSum(Double sum) {
         this.sum = sum;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }

@@ -3,6 +3,8 @@ package com.heorhiireva.salesaccounting.persistence.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -28,14 +30,22 @@ public class Product {
     private Double price;
     private String parameters;
 
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH},
+            mappedBy = "products"
+    )
+    private Set<Sale> sales = new HashSet();
+
     public Product() {
     }
 
-    public Product(String name, String size, Double price, String parameters) {
+    public Product(String name, String size, Double price, String parameters, Set<Sale> sales) {
         this.name = name;
         this.size = size;
         this.price = price;
         this.parameters = parameters;
+        this.sales = sales;
     }
 
     public UUID getProductId() {
@@ -76,5 +86,13 @@ public class Product {
 
     public void setParameters(String parameters) {
         this.parameters = parameters;
+    }
+
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
     }
 }
