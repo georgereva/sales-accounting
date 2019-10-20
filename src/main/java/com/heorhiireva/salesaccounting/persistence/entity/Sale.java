@@ -46,15 +46,20 @@ public class Sale {
     )
     private Set<Product> products = new HashSet();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "buyer_id", referencedColumnName = "buyer_id")
+    private Buyer buyer;
+
     public Sale() {
     }
 
-    public Sale(String name, LocalDateTime dateTime, Integer qty, Double sum, Set<Product> products) {
+    public Sale(String name, LocalDateTime dateTime, Integer qty, Double sum, Set<Product> products, Buyer buyer) {
         this.name = name;
         this.dateTime = dateTime;
         this.qty = qty;
         this.sum = sum;
         this.products = products;
+        this.buyer = buyer;
     }
 
     public UUID getSaleId() {
