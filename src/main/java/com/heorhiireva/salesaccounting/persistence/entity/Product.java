@@ -37,15 +37,23 @@ public class Product {
     )
     private Set<Sale> sales = new HashSet();
 
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH},
+            mappedBy = "products"
+    )
+    private Set<Supplier> suppliers = new HashSet();
+
     public Product() {
     }
 
-    public Product(String name, String size, Double price, String parameters, Set<Sale> sales) {
+    public Product(String name, String size, Double price, String parameters, Set<Sale> sales, Set<Supplier> suppliers) {
         this.name = name;
         this.size = size;
         this.price = price;
         this.parameters = parameters;
         this.sales = sales;
+        this.suppliers = suppliers;
     }
 
     public UUID getProductId() {
@@ -94,5 +102,13 @@ public class Product {
 
     public void setSales(Set<Sale> sales) {
         this.sales = sales;
+    }
+
+    public Set<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public void setSuppliers(Set<Supplier> suppliers) {
+        this.suppliers = suppliers;
     }
 }

@@ -50,16 +50,21 @@ public class Sale {
     @JoinColumn(name = "buyer_id", referencedColumnName = "buyer_id")
     private Buyer buyer;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "personal_id", referencedColumnName = "personal_id")
+    private Personal personal;
+
     public Sale() {
     }
 
-    public Sale(String name, LocalDateTime dateTime, Integer qty, Double sum, Set<Product> products, Buyer buyer) {
+    public Sale(String name, LocalDateTime dateTime, Integer qty, Double sum, Set<Product> products, Buyer buyer, Personal personal) {
         this.name = name;
         this.dateTime = dateTime;
         this.qty = qty;
         this.sum = sum;
         this.products = products;
         this.buyer = buyer;
+        this.personal = personal;
     }
 
     public UUID getSaleId() {
@@ -108,5 +113,21 @@ public class Sale {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
     }
 }
