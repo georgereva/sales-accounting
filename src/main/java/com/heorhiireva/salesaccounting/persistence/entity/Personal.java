@@ -115,4 +115,9 @@ public class Personal {
     public void setSales(Set<Sale> sales) {
         this.sales = sales;
     }
+
+    @Override
+    public String toString() {
+        return surname + " " + name + " " + patronymic;
+    }
 }

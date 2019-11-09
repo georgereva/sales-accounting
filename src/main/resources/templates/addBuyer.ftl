@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Продажи</title>
+    <title>Новый покупатель</title>
 </head>
 <body>
 
@@ -21,8 +21,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="./home">Продажи <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="./home">Продажи</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="products">Товары</a>
@@ -30,8 +30,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="suppliers">Поставщики</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="buyers">Покупатели</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="buyers">Покупатели<span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -40,51 +40,58 @@
         </form>
     </div>
 </nav>
-<div style="margin-top: 20px;">
-<div class="out"  align="left">
+
+<div style="margin-top: 20px;" class="container" align="center">
+<div class="out" align="center">
     <div class="page-header">
-        <h1>Продажи</h1>
+        <h1>Новый покупатель</h1>
     </div>
 </div>
-    <div class="bottom"> <a href="./addSale" class="btn btn-success"   role="button"><span style="margin-right: 5px;" class="glyphicon glyphicon-plus"></span>Новий запис</a></div>
 
-    <table class="table table-striped table-hover table-condensed table-bordered">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Название</th>
-        <th scope="col">Количество</th>
-        <th scope="col">Сумма</th>
-        <th scope="col">Покупатель</th>
-        <th scope="col">Продавец</th>
-        <th scope="col">Дата</th>
-        <th scope="col">Операции</th>
-    </tr>
-    </thead>
-    <tbody>
-    <#list model["saleList"] as sale>
-    <tr>
-        <th scope="row">1</th>
-        <td>${sale.name}</td>
-        <td>${sale.qty}</td>
-        <td>${sale.sum}</td>
-        <td>${sale.buyer}</td>
-        <td>${sale.personal}</td>
-        <td>${sale.dateTime}</td>
-        <td align="right" class="warning">
-            <a href="./updateSale?id=${sale.saleId}" class="btn btn-xs btn-warning"  role="button"><span style="margin-right: 5px"></span>Редагувати</a>
-            <a href="./deleteSale?id=${sale.saleId}" class="btn btn-xs btn-danger"  role="button"><span style="margin-right: 5px"></span>Видалити</a>
-        </td>
-    </tr>
-    </#list>
-    </tbody>
-</table>
+<form name="buyer" action="/addBuyer" method="post">
+
+    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop" >
+        <input type="text" name="surname" class="form-control" placeholder="Фамилия" required>
+    </div>
+
+    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+        <input type="text" name="name" class="form-control" placeholder="Имя" required>
+    </div>
+
+    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+        <input type="text" name="patronymic" class="form-control" placeholder="Отчество" required>
+    </div>
+
+    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+        <span class="input-group-addon">+380</span>
+        <input type="text" name="phoneNumber" class="form-control" placeholder="Номер телефону" required>
+    </div>
+
+    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+        <input type="text" name="companyName" class="form-control" placeholder="Название компании" required>
+    </div>
+
+    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+        <input type="text" name="address" class="form-control" placeholder="Адрес" required>
+    </div>
+
+    <div style = "margin-top: 5px;">
+        <input type="submit" value="Принять" class="btn btn-success aligntop">
+    </div>
+
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+</form>
 </div>
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

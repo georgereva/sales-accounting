@@ -13,6 +13,10 @@ public class SupplierService {
 
     private SupplierRepository supplierRepository;
 
+    public Supplier save(Supplier supplier) {
+        return supplierRepository.save(supplier);
+    }
+
     public Supplier getOne(UUID supplierId) {
         return supplierRepository.getOne(supplierId);
     }

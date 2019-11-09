@@ -13,6 +13,10 @@ public class BuyerService {
 
     private BuyerRepository buyerRepository;
 
+    public Buyer save(Buyer buyer) {
+        return buyerRepository.save(buyer);
+    }
+
     public Buyer getOne(UUID buyerId) {
         return buyerRepository.getOne(buyerId);
     }

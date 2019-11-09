@@ -1,17 +1,35 @@
 package com.heorhiireva.salesaccounting.controller;
 
+import com.heorhiireva.salesaccounting.service.ProductService;
+import com.heorhiireva.salesaccounting.service.SaleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDateTime;
+
 
 @Controller
 public class MainController {
-    @RequestMapping("/")
-    public String getMainPage() {
+
+    private SaleService saleService;
+    private ProductService productService;
+
+    @RequestMapping({"/", "/home"})
+    public String getMainPage(@ModelAttribute("model") ModelMap model) {
+        model.addAttribute("saleList", saleService.getAll());
+
         return "home";
+    }
+
+    @RequestMapping("/products")
+    public String getProductsPage(@ModelAttribute("model") ModelMap model) {
+        model.addAttribute("productList", productService.getAll());
+
+        return "products";
     }
 
     @RequestMapping("/login")
@@ -23,9 +41,13 @@ public class MainController {
         return "login";
     }
 
-    public static void main(String[] args) {
-        LocalDateTime dateTime = LocalDateTime.now();
+    @Autowired
+    public void setSaleService(SaleService saleService) {
+        this.saleService = saleService;
+    }
 
-        System.out.println(dateTime);
+    @Autowired
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
     }
 }
