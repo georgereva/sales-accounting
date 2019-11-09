@@ -44,6 +44,13 @@ public class Product {
     )
     private Set<Supplier> suppliers = new HashSet();
 
+    public void addSupplier(Supplier supplier) {
+        if (!this.suppliers.contains(supplier)) {
+            supplier.addProduct(this);
+            this.suppliers.add(supplier);
+        }
+    }
+
     public Product() {
     }
 

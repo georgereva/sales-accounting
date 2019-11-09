@@ -47,6 +47,10 @@ public class Supplier {
     )
     private Set<Product> products = new HashSet();
 
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
     public Supplier() {
     }
 
@@ -122,5 +126,10 @@ public class Supplier {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return companyName + " (" + surname + " " + name + " " + patronymic + ")";
     }
 }

@@ -25,13 +25,6 @@ public class MainController {
         return "home";
     }
 
-    @RequestMapping("/products")
-    public String getProductsPage(@ModelAttribute("model") ModelMap model) {
-        model.addAttribute("productList", productService.getAll());
-
-        return "products";
-    }
-
     @RequestMapping("/login")
     public String getLogin(@RequestParam(value = "error", required = false) String error,
                            @RequestParam(value = "logout", required = false) String logout,
