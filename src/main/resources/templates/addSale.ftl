@@ -8,10 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Новый покупатель</title>
+    <title>Новая продажа</title>
 </head>
 <body>
-
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="./home">Sales accounting</a>
@@ -21,8 +20,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="./home">Продажи</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="./home">Продажи<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="products">Товары</a>
@@ -30,8 +29,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="suppliers">Поставщики</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="buyers">Покупатели<span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="buyers">Покупатели</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Аналитика</a>
@@ -45,47 +44,49 @@
 </nav>
 
 <div style="margin-top: 20px;" class="container" align="center">
-<div class="out" align="center">
-    <div class="page-header">
-        <h1>Новый покупатель</h1>
-    </div>
-</div>
-
-<form name="buyer" action="/addBuyer" method="post">
-
-    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop" >
-        <input type="text" name="surname" class="form-control" placeholder="Фамилия" required>
+    <div class="out" align="center">
+        <div class="page-header">
+            <h1>Новая продажа</h1>
+        </div>
     </div>
 
-    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-        <input type="text" name="name" class="form-control" placeholder="Имя" required>
-    </div>
+    <form name="sale" action="/addSale" method="post">
 
-    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-        <input type="text" name="patronymic" class="form-control" placeholder="Отчество" required>
-    </div>
+        <div style="width:500px; margin-top: 5px;'" class="form-group">
+            <select class="form-control" id="buyer", name="buyer">
+                <option  selected disabled value=''>Покупатель</option>
+                <#list model["buyerList"] as buyer>
+                    <option value="${buyer.buyerId}">${buyer}</option>
+                </#list>
+            </select>
+        </div>
 
-    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-        <span class="input-group-addon">+380</span>
-        <input type="text" name="phoneNumber" class="form-control" placeholder="Номер телефону" required>
-    </div>
+        <div style="width:500px; margin-top: 5px;'" class="form-group">
+            <select class="form-control" id="personal", name="personal">
+                <option  selected disabled value=''>Продавец</option>
+                <#list model["personalList"] as personal>
+                    <option value="${personal.personalId}">${personal}</option>
+                </#list>
+            </select>
+        </div>
 
-    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-        <input type="text" name="companyName" class="form-control" placeholder="Название компании" required>
-    </div>
+        <div style="width:500px; margin-top: 5px;'" class="form-group">
+            <select class="custom-select" multiple id="products" name="products" size="6">
+                <option selected disabled value=''>Товары</option>
+                <#list model["productList"] as product>
+                    <option value="${product.productId}">${product}</option>
+                </#list>
+            </select>
+        </div>
 
-    <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-        <input type="text" name="address" class="form-control" placeholder="Адрес" required>
-    </div>
+        <div style = "margin-top: 5px;">
+            <input type="submit" value="Принять" class="btn btn-success aligntop">
+        </div>
 
-    <div style = "margin-top: 5px;">
-        <input type="submit" value="Принять" class="btn btn-success aligntop">
-    </div>
-
-    <input type="hidden"
-           name="${_csrf.parameterName}"
-           value="${_csrf.token}"/>
-</form>
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+    </form>
 </div>
 
 

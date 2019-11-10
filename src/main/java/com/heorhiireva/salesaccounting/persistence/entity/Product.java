@@ -29,6 +29,7 @@ public class Product {
     private String size;
     private Double price;
     private String parameters;
+    private Integer qty;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -54,11 +55,12 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String size, Double price, String parameters, Set<Sale> sales, Set<Supplier> suppliers) {
+    public Product(String name, String size, Double price, String parameters, Integer qty, Set<Sale> sales, Set<Supplier> suppliers) {
         this.name = name;
         this.size = size;
         this.price = price;
         this.parameters = parameters;
+        this.qty = qty;
         this.sales = sales;
         this.suppliers = suppliers;
     }
@@ -103,6 +105,14 @@ public class Product {
         this.parameters = parameters;
     }
 
+    public Integer getQty() {
+        return qty;
+    }
+
+    public void setQty(Integer qty) {
+        this.qty = qty;
+    }
+
     public Set<Sale> getSales() {
         return sales;
     }
@@ -117,5 +127,10 @@ public class Product {
 
     public void setSuppliers(Set<Supplier> suppliers) {
         this.suppliers = suppliers;
+    }
+
+    @Override
+    public String toString() {
+        return name + " [размер: " +  size + " цена: " + price + "]";
     }
 }

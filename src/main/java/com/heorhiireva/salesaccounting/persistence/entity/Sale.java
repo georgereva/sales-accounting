@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -53,6 +54,29 @@ public class Sale {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "personal_id", referencedColumnName = "personal_id")
     private Personal personal;
+
+    public void addProducts(List<Product> products) {
+        for (Product product : products) {
+            if (!this.products.contains(product)) {
+                this.products.add(product);
+                product.getSales().add(this);
+            }
+        }
+    }
+
+    public void addBuyer(Buyer buyer) {
+        this.buyer = buyer;
+        if (!buyer.getSales().contains(this)) {
+            buyer.getSales().add(this);
+        }
+    }
+
+    public void addPersonal(Personal personal) {
+        this.personal = personal;
+        if (!personal.getSales().contains(this)) {
+            personal.getSales().add(this);
+        }
+    }
 
     public Sale() {
     }

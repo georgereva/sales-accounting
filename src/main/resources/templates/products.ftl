@@ -33,6 +33,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="buyers">Покупатели</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Аналитика</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -58,6 +61,7 @@
             <th scope="col">Характеристики</th>
             <th scope="col">Цена</th>
             <th scope="col">Размер</th>
+            <th scope="col">Количество</th>
             <th scope="col">Операции</th>
         </tr>
         </thead>
@@ -69,6 +73,7 @@
                 <td>${product.parameters}</td>
                 <td>${product.price}</td>
                 <td>${product.size}</td>
+                <td>${product.qty}</td>
                 <td align="right" class="warning">
                     <a href="./updateProduct?id=${product.productId}" class="btn btn-xs btn-warning"  role="button"><span style="margin-right: 5px"></span>Редагувати</a>
                     <a href="./deleteProduct?id=${product.productId}" class="btn btn-xs btn-danger"  role="button"><span style="margin-right: 5px"></span>Видалити</a>

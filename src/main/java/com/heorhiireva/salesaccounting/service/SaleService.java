@@ -13,6 +13,14 @@ public class SaleService {
 
     private SaleRepository saleRepository;
 
+    public Long count() {
+        return saleRepository.count();
+    }
+
+    public Sale save(Sale sale) {
+        return saleRepository.save(sale);
+    }
+
     public Sale getOne(UUID saleId) {
         return saleRepository.getOne(saleId);
     }
