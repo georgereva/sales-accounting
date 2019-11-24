@@ -67,7 +67,7 @@
     <tbody>
     <#list model["saleList"] as sale>
     <tr>
-        <th scope="row">1</th>
+        <th scope="row">${sale_index + 1}</th>
         <td>${sale.name}</td>
         <td>${sale.qty}</td>
         <td>${sale.sum}</td>
