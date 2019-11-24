@@ -28,6 +28,7 @@ public class Product {
     private String name;
     private String size;
     private Double price;
+    private Double costPrice;
     private String parameters;
     private Integer qty;
 
@@ -55,10 +56,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String size, Double price, String parameters, Integer qty, Set<Sale> sales, Set<Supplier> suppliers) {
+    public Product(String name, String size, Double price, Double costPrice, String parameters, Integer qty, Set<Sale> sales, Set<Supplier> suppliers) {
         this.name = name;
         this.size = size;
         this.price = price;
+        this.costPrice = costPrice;
         this.parameters = parameters;
         this.qty = qty;
         this.sales = sales;
@@ -95,6 +97,14 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(Double costPrice) {
+        this.costPrice = costPrice;
     }
 
     public String getParameters() {

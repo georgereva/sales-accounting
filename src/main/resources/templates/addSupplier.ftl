@@ -33,7 +33,7 @@
                 <a class="nav-link" href="buyers">Покупатели</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Аналитика</a>
+                <a class="nav-link" href="analytics">Аналитика</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

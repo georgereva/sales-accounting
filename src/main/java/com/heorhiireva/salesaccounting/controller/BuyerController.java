@@ -32,7 +32,7 @@ public class BuyerController {
         buyer.setPhoneNumber("+380" + buyer.getPhoneNumber());
 
         buyerService.save(buyer);
-        return "redirect:/suppliers";
+        return "redirect:/buyers";
     }
 
     @Autowired
