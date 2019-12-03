@@ -68,7 +68,7 @@
         <tbody>
         <#list model["buyerList"] as buyer>
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">${buyer_index + 1}</th>
                 <td>${buyer.surname}</td>
                 <td>${buyer.name}</td>
                 <td>${buyer.patronymic}</td>

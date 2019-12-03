@@ -58,6 +58,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Название</th>
+            <th scope="col">Производитель</th>
+            <th scope="col">Категория товара</th>
             <th scope="col">Характеристики</th>
             <th scope="col">Цена</th>
             <th scope="col">Себестоимость</th>
@@ -69,8 +71,10 @@
         <tbody>
         <#list model["productList"] as product>
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">${product_index + 1}</th>
                 <td>${product.name}</td>
+                <td>${product.brand}</td>
+                <td>${product.category}</td>
                 <td>${product.parameters}</td>
                 <td>${product.price}</td>
                 <td>${product.costPrice}</td>

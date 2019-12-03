@@ -27,6 +27,8 @@ public class Product {
 
     private String name;
     private String size;
+    private String brand;
+    private String category;
     private Double price;
     private Double costPrice;
     private String parameters;
@@ -56,9 +58,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String size, Double price, Double costPrice, String parameters, Integer qty, Set<Sale> sales, Set<Supplier> suppliers) {
+    public Product(String name, String size, String brand, String category, Double price, Double costPrice, String parameters, Integer qty, Set<Sale> sales, Set<Supplier> suppliers) {
         this.name = name;
         this.size = size;
+        this.brand = brand;
+        this.category = category;
         this.price = price;
         this.costPrice = costPrice;
         this.parameters = parameters;
@@ -137,6 +141,22 @@ public class Product {
 
     public void setSuppliers(Set<Supplier> suppliers) {
         this.suppliers = suppliers;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
