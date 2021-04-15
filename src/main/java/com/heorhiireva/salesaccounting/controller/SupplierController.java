@@ -23,7 +23,6 @@ public class SupplierController {
 
     @RequestMapping(value = "/addSupplier", method = RequestMethod.GET)
     public String getAddBuyerPage(@ModelAttribute("model") ModelMap model) {
-
         return "addSupplier";
     }
 
@@ -32,7 +31,7 @@ public class SupplierController {
         supplier.setPhoneNumber("+380" + supplier.getPhoneNumber());
 
         supplierService.save(supplier);
-        return "redirect:/supplier";
+        return "redirect:/suppliers";
     }
 
     @Autowired

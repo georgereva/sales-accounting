@@ -24,9 +24,9 @@ spring:
 application:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.99.100:5433/sa-db
+    url: jdbc:postgresql://localhost:5432/sadb
     username: postgres
-    password: postgres
+    password: mysecretpassword
 
 ---
 # this is a production profile
