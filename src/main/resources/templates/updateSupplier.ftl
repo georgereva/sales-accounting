@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Поставщики</title>
+    <title>Новый поставщик</title>
 </head>
 <body>
 
@@ -43,45 +43,47 @@
     </div>
 </nav>
 
-<div style="margin-top: 20px;">
-<div class="out" align="left">
-    <div class="page-header">
-        <h1>Поставщики</h1>
+<div style="margin-top: 20px;" class="container" align="center">
+    <div class="out" align="center">
+        <div class="page-header">
+            <h1>Изменить данные поставщика</h1>
+        </div>
     </div>
-</div>
-    <div class="bottom"> <a href="./addSupplier" class="btn btn-success"   role="button"><span style="margin-right: 5px;" class="glyphicon glyphicon-plus"></span>Новий запис</a></div>
+    <form name="supplier" action="/updateSupplier" method="post">
 
-    <table class="table table-striped table-hover table-condensed table-bordered">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Отчество</th>
-            <th scope="col">Адрес</th>
-            <th scope="col">Номер телефона</th>
-            <th scope="col">Название компании</th>
-            <th scope="col">Операции</th>
-        </tr>
-        </thead>
-        <tbody>
-        <#list model["supplierList"] as supplier>
-            <tr>
-                <th scope="row">1</th>
-                <td>${supplier.surname}</td>
-                <td>${supplier.name}</td>
-                <td>${supplier.patronymic}</td>
-                <td>${supplier.address}</td>
-                <td>${supplier.phoneNumber}</td>
-                <td>${supplier.companyName}</td>
-                <td align="right" class="warning">
-                    <a href="./updateSupplier?id=${supplier.supplierId}" class="btn btn-xs btn-warning"  role="button"><span style="margin-right: 5px"></span>Редагувати</a>
-                    <a href="./deleteSupplier?id=${supplier.supplierId}" class="btn btn-xs btn-danger"  role="button"><span style="margin-right: 5px"></span>Видалити</a>
-                </td>
-            </tr>
-        </#list>
-        </tbody>
-    </table>
+        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop" >
+            <input type="text" name="surname" value="${supplier.surname}" class="form-control" placeholder="Фамилия" required>
+        </div>
+
+        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <input type="text" name="name" value="${supplier.name}" class="form-control" placeholder="Имя" required>
+        </div>
+
+        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <input type="text" name="patronymic" value="${supplier.patronymic}" class="form-control" placeholder="Отчество" required>
+        </div>
+
+        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <input type="text" name="phoneNumber" value="${supplier.phoneNumber}" class="form-control" placeholder="Номер телефону" required>
+        </div>
+
+        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <input type="text" name="companyName" value='${supplier.companyName}' class="form-control" placeholder="Название компании" required>
+        </div>
+
+        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <input type="text" name="address" value="${supplier.address}" class="form-control" placeholder="Адрес" required>
+        </div>
+
+        <div style = "margin-top: 5px;">
+            <input type="submit" value="Принять" class="btn btn-success aligntop">
+            <input type="hidden" name="supplierId" value="${supplier.supplierId}">
+        </div>
+
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+    </form>
 </div>
 
 
@@ -90,5 +92,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
 </body>
 </html>

@@ -49,9 +49,7 @@
             <h1>Новый поставщик</h1>
         </div>
     </div>
-
     <form name="supplier" action="/addSupplier" method="post">
-
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop" >
             <input type="text" name="surname" class="form-control" placeholder="Фамилия" required>
         </div>
