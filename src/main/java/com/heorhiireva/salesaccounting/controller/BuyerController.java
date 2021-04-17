@@ -8,6 +8,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 public class BuyerController {
@@ -32,6 +35,25 @@ public class BuyerController {
         buyer.setPhoneNumber("+380" + buyer.getPhoneNumber());
 
         buyerService.save(buyer);
+        return "redirect:/buyers";
+    }
+
+    @RequestMapping(value = "/updateBuyer", method = RequestMethod.GET)
+    public String getUpdateBuyerPage(@RequestParam("id") UUID id, ModelMap model) {
+        model.addAttribute("buyer",buyerService.getOne(id));
+        return "updateBuyer";
+    }
+
+    @RequestMapping(value = "/updateBuyer", method = RequestMethod.POST)
+    public String updateBuyer(@ModelAttribute("buyerId") UUID id, Buyer buyer) {
+        buyer.setBuyerId(id);
+        buyerService.save(buyer);
+        return "redirect:/buyers";
+    }
+
+    @RequestMapping(value = "/deleteBuyer", method = RequestMethod.GET)
+    public String deleteBuyerById(@RequestParam("id") UUID id) {
+        buyerService.deleteById(id);
         return "redirect:/buyers";
     }
 

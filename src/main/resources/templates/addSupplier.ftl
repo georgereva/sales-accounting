@@ -58,8 +58,8 @@
             <input type="text" name="surname" class="form-control" placeholder="Фамилия" required>
         </div>
 
-        <div style="margin-top: 5px;'" class="input-group aligntop">
-            <div style="width:500px; margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
                 <span>Имя</span>
             </div>
             <input type="text" name="name" class="form-control" placeholder="Имя" required>

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Новый поставщик</title>
+    <title>Изменить данные поставщика</title>
 </head>
 <body>
 
@@ -52,26 +52,44 @@
     <form name="supplier" action="/updateSupplier" method="post">
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop" >
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Фамилия</span>
+            </div>
             <input type="text" name="surname" value="${supplier.surname}" class="form-control" placeholder="Фамилия" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Имя</span>
+            </div>
             <input type="text" name="name" value="${supplier.name}" class="form-control" placeholder="Имя" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Отчество</span>
+            </div>
             <input type="text" name="patronymic" value="${supplier.patronymic}" class="form-control" placeholder="Отчество" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-            <input type="text" name="phoneNumber" value="${supplier.phoneNumber}" class="form-control" placeholder="Номер телефону" required>
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Номер телефона</span>
+            </div>
+            <input type="text" name="phoneNumber" value="${supplier.phoneNumber}" class="form-control" placeholder="Номер телефона" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Название компании</span>
+            </div>
             <input type="text" name="companyName" value='${supplier.companyName}' class="form-control" placeholder="Название компании" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Адрес</span>
+            </div>
             <input type="text" name="address" value="${supplier.address}" class="form-control" placeholder="Адрес" required>
         </div>
 

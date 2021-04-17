@@ -25,6 +25,10 @@ public class BuyerService {
         return buyerRepository.findAll();
     }
 
+    public void deleteById(UUID buyerId) {
+        buyerRepository.deleteById(buyerId);
+    }
+
     @Autowired
     public void setBuyerRepository(BuyerRepository buyerRepository) {
         this.buyerRepository = buyerRepository;

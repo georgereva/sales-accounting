@@ -35,20 +35,20 @@ public class SupplierController {
     }
 
     @RequestMapping(value = "/updateSupplier", method = RequestMethod.GET)
-    public String getUpdateSupplier(@RequestParam UUID id, ModelMap model) {
+    public String getUpdateSupplierPage(@RequestParam("id") UUID id, ModelMap model) {
         model.addAttribute("supplier", supplierService.getOne(id));
         return "updateSupplier";
     }
 
     @RequestMapping(value = "/updateSupplier", method = RequestMethod.POST)
-    public String updateSupplier(@ModelAttribute UUID id, Supplier supplier) {
+    public String updateSupplier(@ModelAttribute("supplierId") UUID id, Supplier supplier) {
         supplier.setSupplierId(id);
         supplierService.save(supplier);
         return "redirect:/suppliers";
     }
 
     @RequestMapping(value = "/deleteSupplier", method = RequestMethod.GET)
-    public String deleteSupplier(@RequestParam UUID id) {
+    public String deleteSupplier(@RequestParam("id") UUID id) {
         supplierService.deleteById(id);
         return "redirect:/suppliers";
     }
