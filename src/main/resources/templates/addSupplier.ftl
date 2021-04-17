@@ -50,28 +50,47 @@
         </div>
     </div>
     <form name="supplier" action="/addSupplier" method="post">
-        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop" >
+
+        <div style="width:500px; margin-top: 5px;" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Фамилия</span>
+            </div>
             <input type="text" name="surname" class="form-control" placeholder="Фамилия" required>
         </div>
 
-        <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+        <div style="margin-top: 5px;'" class="input-group aligntop">
+            <div style="width:500px; margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Имя</span>
+            </div>
             <input type="text" name="name" class="form-control" placeholder="Имя" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Отчество</span>
+            </div>
             <input type="text" name="patronymic" class="form-control" placeholder="Отчество" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-            <span class="input-group-addon">+380</span>
-            <input type="text" name="phoneNumber" class="form-control" placeholder="Номер телефону" required>
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Номер телефона</span>
+            </div>
+            <span style="margin-top: 8px;" class="input-group-addon">+380</span>
+            <input style="margin-left: 5px;" type="text" name="phoneNumber" class="form-control" placeholder="Номер телефона" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-top: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Название компании</span>
+            </div>
             <input type="text" name="companyName" class="form-control" placeholder="Название компании" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
+            <div style="margin-right: 5px; margin-bottom: 5px;" class="input-group aligntop">
+                <span>Адрес</span>
+            </div>
             <input type="text" name="address" class="form-control" placeholder="Адрес" required>
         </div>
 

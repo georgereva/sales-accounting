@@ -67,7 +67,7 @@
         <tbody>
         <#list model["supplierList"] as supplier>
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">${supplier_index+1}</th>
                 <td>${supplier.surname}</td>
                 <td>${supplier.name}</td>
                 <td>${supplier.patronymic}</td>
