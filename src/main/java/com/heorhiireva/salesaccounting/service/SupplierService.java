@@ -25,6 +25,10 @@ public class SupplierService {
         return supplierRepository.findAll();
     }
 
+    public void deleteById(UUID supplierId) {
+        supplierRepository.deleteById(supplierId);
+    }
+
     @Autowired
     public void setSupplierRepository(SupplierRepository supplierRepository) {
         this.supplierRepository = supplierRepository;

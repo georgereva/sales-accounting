@@ -41,9 +41,15 @@ public class SupplierController {
     }
 
     @RequestMapping(value = "/updateSupplier", method = RequestMethod.POST)
-    public String updateSupplier(@ModelAttribute("supplierId") UUID id, Supplier supplier) {
+    public String updateSupplier(@ModelAttribute UUID id, Supplier supplier) {
         supplier.setSupplierId(id);
         supplierService.save(supplier);
+        return "redirect:/suppliers";
+    }
+
+    @RequestMapping(value = "/deleteSupplier", method = RequestMethod.GET)
+    public String deleteSupplier(@RequestParam UUID id) {
+        supplierService.deleteById(id);
         return "redirect:/suppliers";
     }
 
