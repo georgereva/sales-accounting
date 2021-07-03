@@ -69,8 +69,8 @@
         <tbody>
         <#list model["productList"] as product>
             <tr>
-                <th scope="row">1</th>
-                <td>${product.name}</td>
+                <th scope="row">${product_index + 1}</th>
+                <td>${product.name_product}</td>
                 <td>${product.parameters}</td>
                 <td>${product.price}</td>
                 <td>${product.costPrice}</td>

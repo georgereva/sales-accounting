@@ -1,6 +1,8 @@
 package com.heorhiireva.salesaccounting.persistence.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -25,7 +27,7 @@ public class Product {
     )
     private UUID productId;
 
-    private String name;
+    private String name_product;
     private String size;
     private Double price;
     private Double costPrice;
@@ -41,8 +43,17 @@ public class Product {
 
     @ManyToMany(
             fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH},
-            mappedBy = "products"
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}
+            //mappedBy = "products"
+    )
+    @JoinTable(
+            name = "supplier_product",
+            joinColumns = {@JoinColumn(
+                    name = "product_id"
+            )},
+            inverseJoinColumns = {@JoinColumn(
+                    name = "supplier_id"
+            )}
     )
     private Set<Supplier> suppliers = new HashSet();
 
@@ -56,8 +67,8 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String size, Double price, Double costPrice, String parameters, Integer qty, Set<Sale> sales, Set<Supplier> suppliers) {
-        this.name = name;
+    public Product(String name_product, String size, Double price, Double costPrice, String parameters, Integer qty, Set<Sale> sales, Set<Supplier> suppliers) {
+        this.name_product = name_product;
         this.size = size;
         this.price = price;
         this.costPrice = costPrice;
@@ -75,12 +86,12 @@ public class Product {
         this.productId = productId;
     }
 
-    public String getName() {
-        return name;
+    public String getName_product() {
+        return name_product;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName_product(String name) {
+        this.name_product = name;
     }
 
     public String getSize() {
@@ -141,6 +152,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return name + " [размер: " +  size + " цена: " + price + "]";
+        return name_product + " [размер: " +  size + " цена: " + price + "]";
     }
 }

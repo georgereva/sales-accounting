@@ -24,7 +24,7 @@ public class UserDao {
 
         userMap.put("admin", User.builder()
                 .username("admin")
-                .password(new BCryptPasswordEncoder().encode("123456"))
+                .password(new BCryptPasswordEncoder().encode("1"))
                 .authorities(userRoles)
                 .accountNonExpired(true)
                 .accountNonLocked(true)

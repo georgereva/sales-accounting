@@ -33,27 +33,30 @@ public class BuyerController {
     @RequestMapping(value = "/addBuyer", method = RequestMethod.POST)
     public String addBuyer(@ModelAttribute("buyer") Buyer buyer) {
         buyer.setPhoneNumber("+380" + buyer.getPhoneNumber());
-
         buyerService.save(buyer);
+
         return "redirect:/buyers";
     }
 
     @RequestMapping(value = "/updateBuyer", method = RequestMethod.GET)
     public String getUpdateBuyerPage(@RequestParam("id") UUID id, ModelMap model) {
         model.addAttribute("buyer",buyerService.getOne(id));
+
         return "updateBuyer";
     }
 
     @RequestMapping(value = "/updateBuyer", method = RequestMethod.POST)
-    public String updateBuyer(@ModelAttribute("buyerId") UUID id, Buyer buyer) {
-        buyer.setBuyerId(id);
+    public String updateBuyer(@ModelAttribute("buyerId") Buyer buyer) {
+        buyer.setBuyerId(buyer.getBuyerId());
         buyerService.save(buyer);
+
         return "redirect:/buyers";
     }
 
     @RequestMapping(value = "/deleteBuyer", method = RequestMethod.GET)
     public String deleteBuyerById(@RequestParam("id") UUID id) {
         buyerService.deleteById(id);
+
         return "redirect:/buyers";
     }
 

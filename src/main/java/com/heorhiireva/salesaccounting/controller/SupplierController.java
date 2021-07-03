@@ -41,8 +41,8 @@ public class SupplierController {
     }
 
     @RequestMapping(value = "/updateSupplier", method = RequestMethod.POST)
-    public String updateSupplier(@ModelAttribute("supplierId") UUID id, Supplier supplier) {
-        supplier.setSupplierId(id);
+    public String updateSupplier(@ModelAttribute("supplierId") Supplier supplier) {
+        supplier.setSupplierId(supplier.getSupplierId());
         supplierService.save(supplier);
         return "redirect:/suppliers";
     }

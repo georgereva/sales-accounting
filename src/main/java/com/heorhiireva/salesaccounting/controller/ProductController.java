@@ -10,6 +10,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 public class ProductController {
@@ -32,10 +35,32 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-    public String addProduce(@ModelAttribute("product") Product product, @ModelAttribute("supplier") Supplier supplier) {
-
+    public String addProduct(@ModelAttribute("product") Product product, @ModelAttribute("supplier") Supplier supplier) {
         product.addSupplier(supplier);
         productService.save(product);
+
+        return "redirect:/products";
+    }
+
+    @RequestMapping(value = "/updateProduct", method = RequestMethod.GET)
+    public String getUpdateProductPage(@RequestParam("id") UUID id, ModelMap model) {
+        model.addAttribute("product", productService.getOne(id));
+
+        return "updateProduct";
+    }
+
+    @RequestMapping(value = "/updateProduct",  method = RequestMethod.POST)
+    public String updateProduct(@ModelAttribute("productId") Product product) {
+        product.setProductId(product.getProductId());
+        productService.save(product);
+
+        return "redirect:/products";
+    }
+
+
+    @RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
+    public String deleteBuyerById(@RequestParam("id") UUID id) {
+        productService.deleteById(id);
 
         return "redirect:/products";
     }

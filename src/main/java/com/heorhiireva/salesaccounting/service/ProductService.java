@@ -25,6 +25,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public void deleteById(UUID productId) {
+        productRepository.deleteById(productId);
+    }
+
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;

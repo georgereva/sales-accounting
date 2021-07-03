@@ -8,9 +8,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Новый товар</title>
+    <title>Изменить данные о товаре</title>
 </head>
 <body>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="./home">Sales accounting</a>
@@ -46,47 +47,45 @@
 <div style="margin-top: 20px;" class="container" align="center">
     <div class="out" align="center">
         <div class="page-header">
-            <h1>Новый товар</h1>
+            <h1>Изменить данные о товаре</h1>
         </div>
     </div>
 
-    <form name="product" action="/addProduct" method="post">
+    <form name="product" action="/updateProduct" method="post">
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop" >
-            <input type="text" name="name_product" class="form-control" placeholder="Наименование" required>
+            <input type="text" name="name_product" value="${product.name_product}" class="form-control" placeholder="Наименование" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-            <input type="text" name="parameters" class="form-control" placeholder="Характеристики" required>
+            <input type="text" name="parameters" value="${product.parameters}" class="form-control" placeholder="Характеристики" required>
         </div>
 
-        <div style="width:500px; margin-top: 5px;'" class="form-group">
-            <select class="form-control" id="supplier", name="supplier">
-                <option  selected disabled value=''>Поставщик</option>
-                <#list model["supplierList"] as supplier>
-                    <option value="${supplier.supplierId}">${supplier}</option>
-                </#list>
-            </select>
+        <div style="width:500px; margin-top: 5px;'"class="input-group aligntop">
+            <#list product.suppliers as supplier>
+                <input class="form-control" value='${supplier.companyName}' name="supplier" disabled>
+            </#list>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-            <input type="text" name="price" class="form-control" placeholder="Цена продажи" required>
+            <input type="text" name="price" value="${product.price?string.computer}" class="form-control" placeholder="Цена продажи" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-            <input type="text" name="costPrice" class="form-control" placeholder="Себестоимость" required>
+            <input type="text" name="costPrice" value="${product.costPrice?string.computer}" class="form-control" placeholder="Себестоимость" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-            <input type="text" name="size" class="form-control" placeholder="Размер" required>
+            <input type="text" name="size" value="${product.size}" class="form-control" placeholder="Размер" required>
         </div>
 
         <div style="width:500px; margin-top: 5px;'" class="input-group aligntop">
-            <input type="text" name="qty" class="form-control" placeholder="Количество" required>
+            <input type="text" name="qty" value="${product.qty?string.computer}" class="form-control" placeholder="Количество" required>
         </div>
 
         <div style = "margin-top: 5px;">
             <input type="submit" value="Принять" class="btn btn-success aligntop">
+            <input type="hidden" name="productId" value="${product.productId}">
         </div>
 
         <input type="hidden"
